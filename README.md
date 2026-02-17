@@ -4,7 +4,7 @@ After conducting tests comparing the free version of ChatGPT and DeepSeek, I ach
 
 I then used this code both to obtain an overview of my dataset and to practice different coding strategies. My dataset consists of digital behavioral data extracted using the web application YouTube Data Tools, which was employed to collect all videos published on a political coalition’s YouTube channel (The Parliamentary Agriculture Front, n = 336). The downloaded CSV file includes a column containing keywords assigned by the channel’s users, named after "tags". YTDT is part of the Digital Methods Initiative, UvA (https://ytdt.digitalmethods.net/faq.php).
 
-###Limitations: this is an exploratory exercize for structural analysis and visualization clarity and is limited in terms of advanced network metrics such as modularity, centrality measures, or community detection, which can be incorporated by cooperating with other CSS researchers.
+###Limitations: this is an exploratory exercize for structural analysis and visualization clarity and is limited in terms of advanced network metrics such as modularity, centrality measures, or community detection, which can be incorporated by cooperating with other CSS researchers. Coding is commented in Portuguese. I tried different strategies for automatic translating, but didn't work!
 
 Key files include: 
 dataset_youtube_FPA.csv: YouTube data extracted from the coalition’s channel 
