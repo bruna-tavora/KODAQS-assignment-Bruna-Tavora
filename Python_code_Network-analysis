@@ -1,3 +1,27 @@
+###Network Analysis
+
+##This script implements a keyword co-occurrence network analysis pipeline using Python. 
+The objective is to transform a structured textual dataset (comma-separated keywords) into a weighted undirected 
+graph that represents term associations across documents.
+
+##Data Input> The script reads a CSV file using pandas, assuming the presence of a keywords column containing 
+comma-separated terms for each observation. Each row is treated as an independent document (or unit of analysis).
+
+
+####The preprocessing stage includes> Converting all keywords to lowercase; Trimming leading and trailing whitespace; 
+Normalizing internal spacing using regular expressions; Removing duplicate keywords within the same document.
+
+###Co-occurrence Extraction> For each document, the script generates all unordered keyword pairs using: itertools.combinations(sorted(set(tags)), 2)
+Each pair represents a co-occurrence relationship. The collections.Counter object aggregates these pairs across
+the dataset, producing frequency counts that later define edge weights.
+
+### Graph Construction> A weighted undirected graph is created using NetworkX. Nodes: Unique keywords.
+Edges: Keyword pairs that co-occur at least once. Edge weight: Frequency of co-occurrence across documents.
+
+### Visualization Strategy: The graph is visualized using matplotlib with a force-directed layout (spring_layout). 
+Key visualization parameters include > Node size scaling based on node degree. Edge width scaling proportional to edge 
+weight.
+****************************************************************************
 # Install required libraries
 !pip install networkx matplotlib --quiet
 
