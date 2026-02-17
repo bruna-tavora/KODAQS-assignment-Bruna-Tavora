@@ -13,18 +13,12 @@ This script implements a keyword co-occurrence network analysis pipeline using P
 
 ##Preprocessing: The preprocessing stage includes converting all keywords to lowercase, trimming leading and trailing whitespace, normalizing internal spacing using regular expressions, and removing duplicate keywords within the same document using set(). This ensures consistent token representation and prevents intra-document duplication from artificially inflating edge weights.
 
-Co-occurrence Extraction
+##Co-occurrence Extraction: For each document, the script generates all unordered keyword pairs using itertools.combinations applied to the cleaned keyword list. Each pair represents a co-occurrence relationship. The collections.Counter object aggregates these pairs across the dataset, producing frequency counts that define edge weights in the network.
 
-For each document, the script generates all unordered keyword pairs using itertools.combinations applied to the cleaned keyword list. Each pair represents a co-occurrence relationship. The collections.Counter object aggregates these pairs across the dataset, producing frequency counts that define edge weights in the network.
+##Graph Construction: A weighted undirected graph is created using NetworkX. Nodes represent unique keywords, and edges represent keyword pairs that co-occur at least once. Edge weights correspond to the frequency of co-occurrence across documents. In some visualizations, filtering is applied (e.g., selecting the Top 20, Top 40, or Top 50 most frequent pairs) to reduce network density and improve interpretability.
 
-Graph Construction
+##Visualization Strategy: The graph is visualized using matplotlib with a force-directed layout (spring_layout). Node size is scaled according to node degree (number of connections), and edge width is proportional to co-occurrence weight. Some versions include manual highlighting of specific keywords to emphasize their structural position. 
 
-A weighted undirected graph is created using NetworkX. Nodes represent unique keywords, and edges represent keyword pairs that co-occur at least once. Edge weights correspond to the frequency of co-occurrence across documents. In some visualizations, filtering is applied (e.g., selecting the Top 20, Top 40, or Top 50 most frequent pairs) to reduce network density and improve interpretability.
+##Analytical Purpose: The resulting network structure allows for the identification of high-degree nodes (central terms), detection of strongly associated keyword clusters, inspection of thematic concentration patterns, and support for subsequent qualitative or discourse-based analysis. 
 
-Visualization Strategy
-
-The graph is visualized using matplotlib with a force-directed layout (spring_layout). Node size is scaled according to node degree (number of connections), and edge width is proportional to co-occurrence weight. Some versions include manual highlighting of specific keywords to emphasize their structural position. A fixed random seed is used to ensure layout reproducibility.
-
-Analytical Purpose
-
-The resulting network structure allows for the identification of high-degree nodes (central terms), detection of strongly associated keyword clusters, inspection of thematic concentration patterns, and support for subsequent qualitative or discourse-based analysis. The implementation prioritizes exploratory structural analysis and visualization clarity rather than advanced network metrics such as modularity, centrality measures, or community detection, which can be incorporated as future extensions.
+The implementation prioritizes exploratory structural analysis and visualization clarity and is limited in terms of advanced network metrics such as modularity, centrality measures, or community detection, which can be incorporated as future extensions.
